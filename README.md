@@ -1,6 +1,6 @@
 # boston
 
-deployed results:
+DEPLOYED APPLICATIONS:
 #
 Angular (TypeScript) https://boston-linreg-test.web.app/
 #
