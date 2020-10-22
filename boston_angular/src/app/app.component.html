@@ -1,0 +1,47 @@
+<div id="main-container">
+  <h1>Linear regression test results</h1>
+  <p>For details refer to <a href="https://scikit-learn.org/stable/datasets/index.html#boston-dataset" target="_blank"><u>Boston house prices dataset on scikit-learn.org</u></a>.</p>
+  <div id="button-message-div">
+    <button 
+      type="button" 
+      class="btn btn-primary" 
+      (click)="loadClick()" 
+      [disabled]="lastRowLoaded">
+        Load next {{numRowsIncrement}} rows
+    </button>
+    <div id="message">{{message}}</div>
+    <button [disabled]="!selectedNodes || selectedNodes.length==0" id="deselect-btn"
+      type="button" 
+      class="btn btn-secondary" 
+      (click)="deselectClick()">
+        Deselect all
+    </button>
+  </div>
+  <div id="table-plot-div" (resized)="onResized($event)">
+    <div id="table-div">
+      <ag-grid-angular 
+        #table
+        style="width: 100%; height: 100%;"
+        class="ag-theme-alpine"
+        [columnDefs]="columnDefs"      
+        [rowData]="rowData"
+        [gridOptions]="gridOptions"
+        [rowMultiSelectWithClick]="true"
+        (rowDataChanged)="handleRowDataChanged($event)"
+        (rowSelected)="rowSelected($event)"
+        (nodeSelected)="rowSelected($event)"
+        suppressColumnVirtualisation="true"
+        rowSelection="multiple"
+        suppressScrollOnNewData="true">
+      </ag-grid-angular>
+    </div>
+    <div id="plot-div">
+      <plotly-plot id="plot"           
+        [data]="plotData" 
+        [layout]="plotLayout"        
+        [config]="plotConfig"
+        [useResizeHandler]="true">
+      </plotly-plot>
+    </div>
+  </div>
+</div>

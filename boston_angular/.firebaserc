@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "boston-linreg-test": {
+      "hosting": {
+        "boston": [
+          "boston-linreg-test"
+        ]
+      }
+    }
+  }
+}
